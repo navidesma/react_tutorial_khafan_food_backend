@@ -25,6 +25,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from .run_on_startup import run_on_start_up
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -54,10 +55,19 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    
     path("api/user/", include("user_profile.urls")),
     path("api/food/", include("food_app.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+try:
+    run_on_start_up()
+except:
+    print(
+        "!!!!!!!!!!!!!!!!!!\n",
+        "the requirements for running startup command weren't met, skipping for now.",
+        "\n!!!!!!!!!!!!!!!!!!",
+    )
