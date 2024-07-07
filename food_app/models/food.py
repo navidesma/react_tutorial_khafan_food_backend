@@ -1,12 +1,13 @@
 from django.db import models
 
-from food_app.models.food_category import FoodSubCategory
+from food_app.models.food_category import FoodSubCategory, FoodCategory
 from food_app.models.restaurant import Restaurant
 
 
 class Food(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
+    category = models.ForeignKey(FoodCategory, on_delete=models.PROTECT)
     sub_category = models.ForeignKey(FoodSubCategory, on_delete=models.PROTECT)
     price = models.PositiveIntegerField()
     image = models.FileField(upload_to="")

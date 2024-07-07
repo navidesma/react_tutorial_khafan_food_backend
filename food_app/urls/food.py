@@ -8,6 +8,7 @@ urlpatterns = [
     path("create/", FoodViewSet.as_view({"post": "create"})),
     path("<int:pk>/", FoodViewSetWithoutPermission.as_view({"get": "retrieve"})),
     path(
-        "<int:pk>/", FoodViewSet.as_view({"patch": "partial_update", "get": "retrieve"})
+        "update/<int:pk>/",
+        FoodViewSet.as_view({"patch": "partial_update", "get": "retrieve"}),
     ),
 ]

@@ -10,6 +10,7 @@ class FoodSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "category",
             "sub_category",
             "price",
             "image",
