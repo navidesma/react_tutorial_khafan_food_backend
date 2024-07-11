@@ -18,8 +18,15 @@ class Food(models.Model):
 
     class Meta:
         db_table = "food"
-        
-        
+
     @property
     def restaurant_name(self):
         return self.restaurant.name
+
+    @property
+    def category_name(self):
+        return self.category.name
+
+    @property
+    def sub_category_name(self):
+        return self.sub_category.name
