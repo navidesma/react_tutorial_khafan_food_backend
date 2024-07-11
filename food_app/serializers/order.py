@@ -19,9 +19,8 @@ class OrderSerializer(serializers.ModelSerializer):
             "total_cost",
             "customer",
             "address",
-            "is_pending",
-            "finish_time",
-            "is_successful",
+            "deliver_time",
+            "is_finished",
             "created_at",
         ]
 
